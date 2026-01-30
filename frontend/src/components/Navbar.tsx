@@ -27,7 +27,7 @@ export function Navbar() {
   const { user, loading, signout } = useAuth();
 
   return (
-    <div className="sticky top-0 z-50 border-b border-white/10 bg-black/30 backdrop-blur">
+    <div className="sticky top-0 z-50 border-b border-white/10 bg-black/70">
       <Container>
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">

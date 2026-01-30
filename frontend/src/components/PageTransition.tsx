@@ -1,25 +1,28 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { usePathname } from "next/navigation";
 import React from "react";
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const controls = useAnimation();
+
+  React.useEffect(() => {
+    // Avoid rare cases where exit/initial states keep opacity at 0 until a repaint.
+    controls.set({ opacity: 1, y: 0 });
+    // Trigger a small, fast transition on navigation.
+    controls.start({
+      opacity: [0.92, 1],
+      y: [6, 0],
+      transition: { duration: 0.14, ease: "easeOut" },
+    });
+  }, [pathname, controls]);
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.div
-        key={pathname}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-        className="min-h-screen"
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <motion.div key={pathname} initial={false} animate={controls} className="min-h-screen">
+      {children}
+    </motion.div>
   );
 }
 
