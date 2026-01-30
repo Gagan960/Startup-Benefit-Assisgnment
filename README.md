@@ -36,9 +36,6 @@ This project demonstrates **full-stack engineering**, **product thinking**, and 
 * REST APIs
 * JWT authentication
 
-❌ No GraphQL
-❌ No Firebase / Supabase
-❌ No file uploads (Multer / Cloudinary removed)
 
 ---
 
@@ -83,37 +80,8 @@ frontend/src/
 
 ## ♻️ Backend Reuse Strategy
 
-This project **reuses an existing backend** to reflect real-world development constraints.
+This project follows MVC architecture
 
-### ✅ Kept As-Is
-
-* Express server setup
-* MongoDB + Mongoose configuration
-* Auth routes (`signup`, `signin`)
-* JWT generation & verification
-* Repository → Service → Controller architecture
-
-### 🔧 Extended
-
-* `User` schema now includes:
-
-  ```js
-  isVerified: { type: Boolean, default: false }
-  ```
-* Auth middleware supports:
-
-  * `Authorization: Bearer <token>`
-  * `x-access-token` (backward compatible)
-* Added protected endpoint:
-
-  * `GET /api/v1/user/me`
-
-### 🚫 Removed / Ignored
-
-* Multer / Cloudinary
-* File upload routes
-* Any dependency on image uploads
-  (image fields are plain string URLs only)
 
 ---
 
@@ -252,5 +220,6 @@ Open:
 > **Clarity over complexity**
 > **Product flow over feature count**
 > **Real-world constraints over greenfield assumptions**
+
 
 
