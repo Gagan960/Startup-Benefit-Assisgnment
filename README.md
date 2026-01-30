@@ -78,7 +78,7 @@ frontend/src/
 
 ---
 
-## ♻️ Backend Reuse Strategy
+## ♻️ Backend Strategy
 
 This project follows MVC architecture
 
@@ -220,6 +220,7 @@ Open:
 > **Clarity over complexity**
 > **Product flow over feature count**
 > **Real-world constraints over greenfield assumptions**
+
 
 
 
